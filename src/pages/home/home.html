@@ -11,4 +11,33 @@
   <p>
     If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
   </p>
+
+  <button ion-button (click)="clearList()">Clear Locations</button>
+
+  <ion-list *ngIf="state">
+    <ion-list-header>
+      Running
+    </ion-list-header>
+    <ion-item>
+      {{state.running}}
+    </ion-item>
+
+    <ion-list-header>
+      Region
+    </ion-list-header>
+    <ion-item>
+      {{region}}
+    </ion-item>
+
+    <div *ngIf="state.locations && state.locations.length">
+      <ion-list-header>
+        Locations
+      </ion-list-header>
+      <ion-item *ngFor="let loc of state.locations" text-wrap>
+        {{locationString(loc)}}
+      </ion-item>
+
+    </div>
+  </ion-list>
+
 </ion-content>
